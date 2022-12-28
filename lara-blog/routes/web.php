@@ -26,10 +26,14 @@ Route::get('posts/{post}', function ($slug) {
     return redirect('/');
   }
 
-  $post = file_get_contents($path);
+  $post = cache()->remember("posts.{slug}", now()->addHour(1), function () use ($path) {
+    var_dump('file_get_contents');
+    return file_get_contents($path);
+  });
+
+
 
   return view('post', [
     'post' => $post
   ]);
-})->where('post','[A-z_\-]+');
-
+})->where('post', '[A-z_\-]+');
