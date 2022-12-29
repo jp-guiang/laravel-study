@@ -4,10 +4,12 @@
 <link rel="stylesheet" href="/app.css">
 
 <body>
-  <h1><a href="/">Home</a></h1>
-
   <article>
-    <?= $post; ?>
+    <h1><a href="/">Home</a></h1>
+    <h1><?= $post-> title; ?></h1>
+    <div>
+      <?= $post->body; ?>
+    </div>
   </article>
 
 </body>
