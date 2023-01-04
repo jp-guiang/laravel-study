@@ -24,14 +24,10 @@ Route::get('/', function () {
   ]);
 });
 
-Route::get('posts/{post:id}', function (Post $post) {
-
-  // dd($post->id);
-
-  echo gettype($post->id);
+Route::get('posts/{post:slug}', function (Post $post) {
 
   return view('post', [
 
-    'post' => Post::findorFail($post->id)
+    'post' => ($post)
   ]);
 });
