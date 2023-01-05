@@ -18,10 +18,10 @@ use Illuminate\Support\Facades\File;
 
 
 Route::get('/', function () {
-  $posts = Post::all();
+
 
   return view('posts', [
-    'posts' => $posts
+    'posts' => Post::with('category')->get()
   ]);
 });
 
