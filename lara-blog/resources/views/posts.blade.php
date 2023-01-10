@@ -1,23 +1,17 @@
+<x-layout>    
 
-<x-layout>
-  <h1><a href="/">Home</a></h1>
+  @include('_posts-header')
 
-  @foreach($posts as $post)
-  <article>
-    <h1>
-      <a href="/posts/{{$post->slug}}">
-        {{$post->title}}
-      </a>
+  <main class="max-w-6xl mx-auto mt-6 lg:mt-20 space-y-6">
       
-    </h1>
+    @if($posts->count())  
+     <x-posts-grid :posts="$posts"/>
 
-    <p>
-      By <a href="/authors/{{$post->author->username}}">{{$post->author->name}}</a> in <a href="/categories/{{$post->category->slug}}">{{$post->category->name}}</a>
-    </p>
+    @else
+    <p class='text-center'>No posts yet please come back later</p>
 
-    <div>
-      {!!$post->excerpt!!}
-    </div>
-  </article>
-  @endforeach
+    @endif
+
+  </main>
+
 </x-layout>
